@@ -1,0 +1,20 @@
+{
+  "name": "playstation5-amazon-checker",
+  "version": "1.0.0",
+  "description": "this programme checks in the background if the playstation 5 is available on amazon. if it is available, the programme speaks to you ;)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jonathan Schneider",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "install": "^0.13.0",
+    "npm": "^6.14.8",
+    "request": "^2.88.2",
+    "say": "^0.16.0"
+  }
+}
