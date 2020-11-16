@@ -25,7 +25,7 @@ setInterval(() => {
     var $ = cheerio.load(body);
     var availbleDrive = $("#availability > span").text().indexOf(DETECTION_STRING_NOT_AVAILABLE);
     var productNameDrive = $("#productTitle").text();
-    if (availbleDrive < 0 && productNameDigital != "") say.speak(productNameDrive + AVAILABLE_MESSAGE);
+    if (availbleDrive < 0 && productNameDrive != "") say.speak(productNameDrive + AVAILABLE_MESSAGE);
   });
 
 }, INTERVAL);
