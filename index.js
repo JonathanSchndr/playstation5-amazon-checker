@@ -16,7 +16,7 @@ setInterval(() => {
     var $ = cheerio.load(body);
     var availbleDigital = $("#availability > span").text().indexOf(DETECTION_STRING_NOT_AVAILABLE);
     var productNameDigital = $("#productTitle").text();
-    if (availbleDigital < 0) say.speak(productNameDigital + AVAILABLE_MESSAGE);
+    if (availbleDigital < 0 && productNameDigital != "") say.speak(productNameDigital + AVAILABLE_MESSAGE);
   });
 
   request({
@@ -25,7 +25,7 @@ setInterval(() => {
     var $ = cheerio.load(body);
     var availbleDrive = $("#availability > span").text().indexOf(DETECTION_STRING_NOT_AVAILABLE);
     var productNameDrive = $("#productTitle").text();
-    if (availbleDrive < 0) say.speak(productNameDrive + AVAILABLE_MESSAGE);
+    if (availbleDrive < 0 && productNameDigital != "") say.speak(productNameDrive + AVAILABLE_MESSAGE);
   });
 
 }, INTERVAL);
