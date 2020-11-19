@@ -19,7 +19,7 @@ setInterval(() => {
     var $ = cheerio.load(body);
     var availbleDigital = $("#availability > span").text().indexOf(DETECTION_STRING_NOT_AVAILABLE);
     var productNameDigital = $("#productTitle").text();
-    if (availbleDigital > 0 && productNameDigital != "") {
+    if (availbleDigital < 0 && productNameDigital != "") {
       say.speak(productNameDigital + AVAILABLE_MESSAGE);
       if (!isBrowserOpen) open(PLAYSTATION_DIGITAL_URL, {
         app: 'google chrome'
