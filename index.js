@@ -6,7 +6,7 @@ const open = require("open")
 const DETECTION_STRING_NOT_AVAILABLE = "Derzeit nicht verfügbar."; //OTHER COUNTRY, NEEDS A CHANGE
 const PLAYSTATION_DIGITAL_URL = "https://www.amazon.de/dp/B08H98GVK8/"; //OTHER COUNTRY, NEEDS A CHANGE
 const PLAYSTATION_DRIVE_URL = "https://www.amazon.de/dp/B08H93ZRK9/"; //OTHER COUNTRY, NEEDS A CHANGE
-const INTERVAL = 10000;
+const INTERVAL = 30000;
 const AVAILABLE_MESSAGE = " ist auf Amazon verfügbar!";
 
 let isBrowserOpen = false;
