@@ -3,7 +3,7 @@ const cheerio = require("cheerio");
 const say = require("say");
 const colors = require("colors");
 const open = require("open");
-addconst inquirer = require("inquirer");
+const inquirer = require("inquirer");
 
 const DETECTION_STRING_NOT_AVAILABLE = "Derzeit nicht verfügbar."; //OTHER COUNTRY, NEEDS A CHANGE
 const AVAILABLE_MESSAGE = "Auf Lager.";
@@ -81,7 +81,14 @@ async function scrapProduct(uri, i) {
       console.log(colors.red(availableText));
     }
   } catch (error) {
-    console.error(`Error while scraping ${uri}`, error);
+    console.error(`Error while scraping ${uri}`);
+    if (
+      error.response.data.includes(
+        "To discuss automated access to Amazon data please contact"
+      )
+    ) {
+      console.log(colors.red("Amazon is mad"));
+    }
   } finally {
     console.log(colors.zebra(`------------`));
   }
