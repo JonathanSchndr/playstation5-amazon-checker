@@ -1,20 +1,18 @@
 const axios = require("axios").default;
 const cheerio = require("cheerio");
+const fs = require("fs");
 const say = require("say");
 const colors = require("colors");
 const open = require("open");
 const inquirer = require("inquirer");
+const yaml = require("js-yaml");
 
 const DETECTION_STRING_NOT_AVAILABLE = "Derzeit nicht verfügbar."; //OTHER COUNTRY, NEEDS A CHANGE
 const AVAILABLE_MESSAGE = "Auf Lager.";
 
-const PRODUCTS_CHOICES_TO_CHECK = [
-  { name: "PS5 Drive Edition", value: "https://www.amazon.de/dp/B08H93ZRK9/" },
-  {
-    name: "PS5 Digital Edition",
-    value: "https://www.amazon.de/dp/B08H98GVK8/",
-  },
-];
+const PRODUCTS_CHOICES_TO_CHECK = yaml.safeLoad(
+  fs.readFileSync("products.yaml", "utf8")
+).products;
 
 let BROWSER = "google chrome";
 
