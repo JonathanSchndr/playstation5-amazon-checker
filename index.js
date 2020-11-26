@@ -1,7 +1,6 @@
 const axios = require("axios").default;
 const cheerio = require("cheerio");
 const say = require("say");
-const fs = require("fs");
 const colors = require("colors");
 const open = require("open");
 
@@ -10,13 +9,7 @@ const AVAILABLE_MESSAGE = "Auf Lager.";
 
 const PLAYSTATION_DIGITAL_URL = "https://www.amazon.de/dp/B08H98GVK8/"; //OTHER COUNTRY, NEEDS A CHANGE
 const PLAYSTATION_DRIVE_URL = "https://www.amazon.de/dp/B08H93ZRK9/"; //OTHER COUNTRY, NEEDS A CHANGE
-const PLAYSTATION_4_URL =
-  "https://www.amazon.de/PlayStation-Konsole-F-Chassis-DualShock-Controller/dp/B07HHPX4N1?ref_=ast_sto_dp"; //OTHER COUNTRY, NEEDS A CHANGE
-const PRODUCTS_TO_CHECK = [
-  PLAYSTATION_DRIVE_URL,
-  PLAYSTATION_DIGITAL_URL,
-  PLAYSTATION_4_URL,
-];
+const PRODUCTS_TO_CHECK = [PLAYSTATION_DRIVE_URL, PLAYSTATION_DIGITAL_URL];
 const BROWSER = "google chrome";
 const INTERVAL = 30000;
 
