@@ -3,21 +3,55 @@ const cheerio = require("cheerio");
 const say = require("say");
 const colors = require("colors");
 const open = require("open");
+addconst inquirer = require("inquirer");
 
 const DETECTION_STRING_NOT_AVAILABLE = "Derzeit nicht verfügbar."; //OTHER COUNTRY, NEEDS A CHANGE
 const AVAILABLE_MESSAGE = "Auf Lager.";
 
-const PLAYSTATION_DIGITAL_URL = "https://www.amazon.de/dp/B08H98GVK8/"; //OTHER COUNTRY, NEEDS A CHANGE
-const PLAYSTATION_DRIVE_URL = "https://www.amazon.de/dp/B08H93ZRK9/"; //OTHER COUNTRY, NEEDS A CHANGE
-const PRODUCTS_TO_CHECK = [PLAYSTATION_DRIVE_URL, PLAYSTATION_DIGITAL_URL];
-const BROWSER = "google chrome";
-const INTERVAL = 30000;
+const PRODUCTS_CHOICES_TO_CHECK = [
+  { name: "PS5 Drive Edition", value: "https://www.amazon.de/dp/B08H93ZRK9/" },
+  {
+    name: "PS5 Digital Edition",
+    value: "https://www.amazon.de/dp/B08H98GVK8/",
+  },
+];
 
-let isBrowserOpen = false;
+let BROWSER = "google chrome";
 
-setInterval(() => {
-  PRODUCTS_TO_CHECK.forEach(scrapProduct);
-}, INTERVAL);
+async function main() {
+  try {
+    let inq = await inquirer.prompt([
+      {
+        type: "checkbox",
+        choices: PRODUCTS_CHOICES_TO_CHECK,
+        message: "Choose Version(s) to check (check with spacebar)",
+        name: "version",
+      },
+      {
+        name: "interval",
+        type: "number",
+        message: "Interval to scrap (seconds)",
+        default: 30,
+      },
+      {
+        name: "browser",
+        type: "list",
+        choices: ["google chrome", "safari", "firefox"],
+        message: "Which browser",
+        default: "google chrome",
+      },
+    ]);
+    BROWSER = inq.browser;
+
+    // scrap on main run and then by interval
+    inq.version.forEach(scrapProduct);
+    setInterval(() => {
+      inq.version.forEach(scrapProduct);
+    }, inq.interval * 1000);
+  } catch (error) {
+    console.log("error while prompting", error);
+  }
+}
 
 async function scrapProduct(uri, i) {
   const AVAILABLE_SELECTOR = "#availability > span";
@@ -52,3 +86,5 @@ async function scrapProduct(uri, i) {
     console.log(colors.zebra(`------------`));
   }
 }
+
+main();
