@@ -1,5 +1,5 @@
 # playstation5-amazon-checker
-this programme checks in the background if the playstation 5 is available on amazon. if it is available, the programme speaks to you ;)
+This program constantly checks in the background if the PlayStation 5 is available on Amazon. In Case it is available it Speaks to you.
 
 ## install
 - download the repo
@@ -8,8 +8,7 @@ this programme checks in the background if the playstation 5 is available on ama
 - node index.js
 
 ## info
-the program is adapted for the german market, if you want it to check availability for your country, you have to adapt the url and the string for the check
-other country, needs a change:
+The program is adapted for the German market so if you want it to check availability for your country, you have to Change the URL and the string for the check. Names of Variables you have to Change;
 - DETECTION_STRING_NOT_AVAILABLE
 - PLAYSTATION_DIGITAL_URL
 - PLAYSTATION_DRIVE_URL
